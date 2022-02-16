@@ -12,16 +12,18 @@ const $listaSinOrden = document.querySelector("#lista-sin-orden").children;
 const $textoPromedio = document.querySelector("#texto-promedio");
 const $textoMinimo = document.querySelector("#texto-minimo");
 const $textoMaximo = document.querySelector("#texto-maximo");
-
+const $textoMasFrecuente = document.querySelector("#texto-mas-frecuente")
 
 let arrayListas = unirListas($listaOrdenada,$listaSinOrden);
 
 
 
+
+
 $textoPromedio.innerText += calcularPromedioArray(arrayListas).toFixed(2);
 $textoMaximo.innerText += maximoArray(arrayListas);
-$textoMinimo.innerText += minimoArray(arrayListas)
-
+$textoMinimo.innerText += minimoArray(arrayListas);
+$textoMasFrecuente.innerText += masFrecuentre(arrayListas);
 
 
 function unirListas(lista1,lista2){
@@ -78,5 +80,40 @@ function maximoArray(array){
 
     return maximo;
 
+
+}
+
+function masFrecuentre(array){
+    let maximasRepeticiones=0;
+    let numeroMaxRepeticiones;
+    for(let i =0; i < array.length; i++){
+        
+        let contadorRepedito=0;
+       
+        for(let j=0;j < array.length; j++){
+            if(array[i] === array [j] && i != j){
+                
+                contadorRepedito +=1;
+
+            }
+            
+            if(contadorRepedito > maximasRepeticiones){
+                maximasRepeticiones = contadorRepedito;
+                numeroMaxRepeticiones=array[i];
+
+            }
+
+        }
+        
+
+    }
+
+
+    if(maximasRepeticiones != 0){
+        return numeroMaxRepeticiones;
+    }else{
+        return "Ningun numero se repite mas de 1 vez"
+    }
+    
 
 }
