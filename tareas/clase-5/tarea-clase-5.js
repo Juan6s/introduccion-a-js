@@ -58,9 +58,10 @@ Ejemplo form:
 // 4. obtener el número que más se repite y mostrarlo en un <em> pre-creado con el texto "El número más frecuente es..."
 
 
-const $entradaSalarioAnual = document.querySelector("#entradaSalarioAnual");
-const $salidaSalarioMensual = document.querySelector("#salidaSalarioMensual");
-const $botonCalcular = document.querySelector("#botonIngreso");
+const $entradaSalarioAnual = document.querySelector("#entrada-salario-anual");
+const $salidaSalarioMensual = document.querySelector("#salida-salario-mensual");
+const $botonCalcular = document.querySelector("#boton-ingreso");
+const MESES_ANIO =12
 
 
 $botonCalcular.onclick = function () {
@@ -68,5 +69,5 @@ $botonCalcular.onclick = function () {
 }
 
 function calcularSueldoMensual(sueldoAnual){
-    return sueldoAnual /12;
+    return sueldoAnual /MESES_ANIO;
 }
