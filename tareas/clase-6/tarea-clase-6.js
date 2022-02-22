@@ -7,10 +7,61 @@ Punto bonus: Crear un botón para "empezar de nuevo" que empiece el proceso nuev
 */
 
 
-/*
-TAREA:
-Crear una interfaz que permita agregar ó quitar (botones agregar y quitar) inputs+labels para completar el salario anual de cada integrante de la familia que trabaje.
-Al hacer click en "calcular", mostrar en un elemento pre-existente el mayor salario anual, menor salario anual, salario anual promedio y salario mensual promedio.
+const $botonCargar = document.querySelector("#boton-cargar");
+const $botonReset = document.querySelector("#boton-reset");
+const $division = document.querySelector("#familiares");
 
-Punto bonus: si hay inputs vacíos, ignorarlos en el cálculo (no contarlos como 0).
-*/
+
+
+
+
+
+function crearElementos(numero){
+    let elementos=[]
+        for(let i = 0; i < numero; i++){
+            let $input = document.createElement("input");
+            let $label = document.createElement("label");
+            $label.textContent = "asdsa";
+
+            elementos[i] = document.createElement("div");     
+            elementos[i].appendChild($label)
+            elementos[i].appendChild($input)
+            
+
+            
+        }
+    return elementos;
+}
+
+function agregarElementos(elementos, division){
+    for(let i = 0; i < elementos.length; i++){
+
+        division.appendChild(elementos[i])
+
+    }
+
+
+}
+
+
+function resetElementos(){
+    console.log("AS")
+    $division.removeChild(0)
+
+}
+
+
+
+
+$botonCargar.onclick = function(){
+    const inputFamiliares = Number(document.querySelector("#input-cantidad-familiares").value);
+    
+    agregarElementos(crearElementos(inputFamiliares),$division);
+    
+    
+
+}
+
+$botonReset.onclick = function(){
+    resetElementos();
+}
