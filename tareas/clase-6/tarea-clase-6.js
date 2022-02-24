@@ -10,22 +10,27 @@ Punto bonus: Crear un botón para "empezar de nuevo" que empiece el proceso nuev
 const $botonCargar = document.querySelector("#boton-cargar");
 const $botonReset = document.querySelector("#boton-reset");
 const $division = document.querySelector("#familiares");
-
+let elementos = [];
 
 
 
 
 
 function crearElementos(numero){
+    const TEXTO = "Edad del integrante Nº:"
+
+
     let elementos=[]
         for(let i = 0; i < numero; i++){
-            let $input = document.createElement("input");
-            let $label = document.createElement("label");
-            $label.textContent = "asdsa";
+            const input = document.createElement("input");
+            const label = document.createElement("label");
+            
+            label.textContent = `${TEXTO} ${i+1}`;
+            input.type = "Number";
 
             elementos[i] = document.createElement("div");     
-            elementos[i].appendChild($label)
-            elementos[i].appendChild($input)
+            elementos[i].appendChild(label);
+            elementos[i].appendChild(input);
             
 
             
@@ -34,34 +39,50 @@ function crearElementos(numero){
 }
 
 function agregarElementos(elementos, division){
+    botonCalcular 
+    
     for(let i = 0; i < elementos.length; i++){
 
         division.appendChild(elementos[i])
 
     }
-
-
-}
-
-
-function resetElementos(){
-    console.log("AS")
-    $division.removeChild(0)
+    
 
 }
 
 
+function resetElementos(elementos,division){
+    for(let i = 0; i<elementos.length;i++){
+        division.removeChild(elementos[i]);
+    }
+    
+    
+    return [];
+
+}
 
 
 $botonCargar.onclick = function(){
     const inputFamiliares = Number(document.querySelector("#input-cantidad-familiares").value);
     
-    agregarElementos(crearElementos(inputFamiliares),$division);
+    if (inputFamiliares <=0){
+        alert("Ingrese numeros mayores a 0!")
+        return false;
+    }
+ 
+
+    if(elementos.length >1){
+        elementos = resetElementos(elementos,$division);
+    }
+    
+    elementos = crearElementos(inputFamiliares);
+    agregarElementos(elementos,$division);
     
     
 
 }
 
+
 $botonReset.onclick = function(){
-    resetElementos();
+    elementos = resetElementos(elementos,$division);
 }
