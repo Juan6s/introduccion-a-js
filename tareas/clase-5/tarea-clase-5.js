@@ -56,3 +56,18 @@ Ejemplo form:
 // 2. obtener el número más pequeño y mostrarlo en un <em> pre-creado con el texto "El número más pequeño es..."
 // 3. obtener el número más grande y mostrarlo en un <em> pre-creado con el texto "El número más grande es..."
 // 4. obtener el número que más se repite y mostrarlo en un <em> pre-creado con el texto "El número más frecuente es..."
+
+
+const $entradaSalarioAnual = document.querySelector("#entrada-salario-anual");
+const $salidaSalarioMensual = document.querySelector("#salida-salario-mensual");
+const $botonCalcular = document.querySelector("#boton-ingreso");
+const MESES_ANIO =12
+
+
+$botonCalcular.onclick = function () {
+    $salidaSalarioMensual.value = "$"+Number(calcularSueldoMensual($entradaSalarioAnual.value)).toFixed(2)
+}
+
+function calcularSueldoMensual(sueldoAnual){
+    return sueldoAnual /MESES_ANIO;
+}
