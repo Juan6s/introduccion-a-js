@@ -68,7 +68,7 @@ function reiniciarElementos(elementos, division) {
 
 function obtenerValorElementos(elementos){
     let valores = [];
-    for (let i =0; i<elementos.length-1; i++){
+    for (let i =0; i<elementos.length; i++){
         let subelemento = elementos[i]
         valores[i] = Number(subelemento.lastChild.value);
     }
@@ -103,8 +103,8 @@ function obtenerPromedioEdades(valores){
         sumaTotal+=valores[i]
 
     }
-    console.log(sumaTotal)
-    return (sumaTotal/valores.length).toFixed(2);
+    
+    return Number((sumaTotal/valores.length).toFixed(2));
     
 }
 
@@ -139,7 +139,7 @@ $botonReset.onclick = function () {
 
 
 
-botonCalcular.onclick = function(){
+document.querySelector("#boton-calcular").onclick = function(){
 
     document.querySelector("#edad-mayor").textContent = `La edad del mayor es:${obtenerMayorEdad(obtenerValorElementos(elementos))}`; 
     document.querySelector("#edad-menor").textContent = `La edad del menor es:${ObtenerMenorEdad(obtenerValorElementos(elementos))}`; 
