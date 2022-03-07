@@ -2,12 +2,12 @@
 <html>
 <head>
     <meta charset="UTF-8">
-
+    <link rel="stylesheet" href="main.css"/>
     <title>Familia</title>
 
 </head>
 <body>
-<form onsubmit="return false">
+<form>
     <label>Ingrese Cantidad de familiares:</label>
     <input type="number" id="input-cantidad-familiares">
     <button type="submit" id="boton-cargar">Siguiente!</button>
@@ -16,7 +16,7 @@
     <div id="familiares">
 
     </div>
-
+    <button type="button" id="boton-calcular" class="oculto">Calcular</button>
     <p id="edad-menor">La edad del menor es:</p>
     <p id="edad-mayor">La edad del mayor es:</p>
     <p id="edad-promedio">El promedio de edad es:</p>

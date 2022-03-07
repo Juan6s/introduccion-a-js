@@ -11,9 +11,6 @@ const $botonCargar = document.querySelector("#boton-cargar");
 const $botonReset = document.querySelector("#boton-reset");
 const $division = document.querySelector("#familiares");
 
-const botonCalcular = document.createElement("button");
-botonCalcular.textContent = "Calcular";
-botonCalcular.id ="boton-calcular;"
 
 let elementos = [];
 
@@ -43,7 +40,6 @@ function crearElementos(numero) {
 
     }
     
-    elementos.push(botonCalcular);
     
     return elementos;
 }
@@ -56,11 +52,11 @@ function agregarElementos(elementos, division) {
         division.appendChild(elementos[i])
 
     }
-
+    document.querySelector("#boton-calcular").className = "";
 
 }
 
-function resetElementos(elementos, division) {
+function reiniciarElementos(elementos, division) {
     for (let i = 0; i < elementos.length; i++) {
         division.removeChild(elementos[i]);
     }
@@ -79,7 +75,7 @@ function obtenerValorElementos(elementos){
     return valores;
 }
 
-function menorEdad(valores){
+function ObtenerMenorEdad(valores){
     let minimo = valores[0]
     for(let i=1;i<valores;i++){
         if(valores[i]<minimo){
@@ -90,7 +86,7 @@ function menorEdad(valores){
     return minimo;
 }
 
-function mayorEdad(valores){
+function obtenerMayorEdad(valores){
     let maximo = valores[0]
     for(let i=1;i<valores.length;i++){
         if(valores[i]>maximo){
@@ -101,7 +97,7 @@ function mayorEdad(valores){
     return maximo;
 }
 
-function promedioEdades(valores){
+function obtenerPromedioEdades(valores){
     let sumaTotal=0;
     for(let i = 0;i<valores.length;i++){
         sumaTotal+=valores[i]
@@ -113,8 +109,11 @@ function promedioEdades(valores){
 }
 
 
-$botonCargar.onclick = function () {
+$botonCargar.onclick = function (event) {
     const inputFamiliares = Number(document.querySelector("#input-cantidad-familiares").value);
+
+    
+    event.preventDefault();
 
     if (inputFamiliares <= 0) {
         alert("Ingrese numeros mayores a 0!")
@@ -123,7 +122,7 @@ $botonCargar.onclick = function () {
 
 
     if (elementos.length > 1) {
-        elementos = resetElementos(elementos, $division);
+        elementos = reiniciarElementos(elementos, $division);
     }
 
     elementos = crearElementos(inputFamiliares);
@@ -134,15 +133,15 @@ $botonCargar.onclick = function () {
 
 
 $botonReset.onclick = function () {
-    elementos = resetElementos(elementos, $division);
-    
+    elementos = reiniciarElementos(elementos, $division);
+    document.querySelector("#boton-calcular").className="oculto";
 }
 
 
 
 botonCalcular.onclick = function(){
 
-    document.querySelector("#edad-mayor").textContent = `La edad del mayor es:${mayorEdad(obtenerValorElementos(elementos))}`; 
-    document.querySelector("#edad-menor").textContent = `La edad del menor es:${menorEdad(obtenerValorElementos(elementos))}`; 
-    document.querySelector("#edad-promedio").textContent = `El promedio de edad es:${promedioEdades(obtenerValorElementos(elementos))}`; 
+    document.querySelector("#edad-mayor").textContent = `La edad del mayor es:${obtenerMayorEdad(obtenerValorElementos(elementos))}`; 
+    document.querySelector("#edad-menor").textContent = `La edad del menor es:${ObtenerMenorEdad(obtenerValorElementos(elementos))}`; 
+    document.querySelector("#edad-promedio").textContent = `El promedio de edad es:${obtenerPromedioEdades(obtenerValorElementos(elementos))}`; 
 }
