@@ -1,0 +1,26 @@
+html{
+    position: absolute;
+    right: 650px;
+    
+    font-family: monospace;
+    font-size: large;
+    
+    background-color: coral;
+    color: whitesmoke;
+    
+}
+ol{
+    background-color: grey;
+    width: 50px;
+    
+}
+ul{
+    background-color: darkslategray;
+    width: 50px;
+}
+
+em{
+
+    color: aqua;
+    background-color: darkslategray;
+}
